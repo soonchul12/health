@@ -13,7 +13,7 @@
         </a>
         <nav>
             <ul>
-                <li><a href="index.html">내 정보</a></li>
+                <li><a href="profile.html">내 정보</a></li>
                 <li><a href="meal-plan.html">식단 계획</a></li>
                 <li><a href="#progress">진행 상황</a></li>
             </ul>
@@ -21,50 +21,23 @@
     </header>
 
     <main>
-        <!-- 사용자 정보 입력 섹션 -->
-        <section id="profile" class="section">
-            <h2>내 정보</h2>
-            <form id="userForm">
-                <div class="form-group">
-                    <label for="height">키 (cm)</label>
-                    <input type="number" id="height" required>
-                </div>
-                <div class="form-group">
-                    <label for="weight">현재 체중 (kg)</label>
-                    <input type="number" id="weight" required>
-                </div>
-                <div class="form-group">
-                    <label for="targetWeight">목표 체중 (kg)</label>
-                    <input type="number" id="targetWeight" required>
-                </div>
-                <div class="form-group">
-                    <label for="targetMuscle">목표 근육량 (kg)</label>
-                    <input type="number" id="targetMuscle">
-                </div>
-                <button type="submit">정보 저장</button>
-            </form>
-            <div id="bmiResult" class="result-box">
-                <h3>BMI 지수: <span id="bmiValue">0</span></h3>
-                <p id="bmiCategory"></p>
-            </div>
+        <section class="date-section">
+            <h2 id="currentDate"></h2>
         </section>
 
-        <!-- 일일 식단 체크리스트 섹션 -->
-        <section id="meal-plan" class="section">
-            <h2>오늘의 식단</h2>
-            <div class="meal-list">
-                <div class="meal-time">
-                    <h3>아침</h3>
-                    <div id="breakfast" class="meal-items"></div>
+        <section class="calorie-section">
+            <h2>오늘의 칼로리</h2>
+            <div class="calorie-gauge-container">
+                <div class="calorie-gauge">
+                    <div class="gauge-fill" id="calorieGauge"></div>
                 </div>
-                <div class="meal-time">
-                    <h3>점심</h3>
-                    <div id="lunch" class="meal-items"></div>
+                <div class="gauge-info">
+                    <span id="currentCalories">0</span> / <span id="targetCalories">0</span> kcal
                 </div>
-                <div class="meal-time">
-                    <h3>저녁</h3>
-                    <div id="dinner" class="meal-items"></div>
-                </div>
+            </div>
+            <div class="meal-summary">
+                <h3>오늘의 식사 현황</h3>
+                <div id="mealCheckList"></div>
             </div>
         </section>
     </main>
@@ -73,6 +46,6 @@
         <p>&copy; 2024 건강 관리 프로그램</p>
     </footer>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/dashboard.js"></script>
 </body>
 </html> 
