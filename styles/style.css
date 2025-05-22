@@ -10,25 +10,11 @@ body {
     color: #333;
 }
 
-
 header {
     background-color: #4CAF50;
     color: white;
     padding: 1rem;
     text-align: center;
-    a:link {
-  color : white;
-}
-a{text-decoration-line:none}
-a:visited {
-  color : white;
-}
-a:hover {
-  color : red;
-}
-a:active {
-  color : white
-}
 }
 
 nav ul {
@@ -133,4 +119,93 @@ button {
 .day-plan h4 {
     color: #666;
     margin-bottom: 0.5rem;
+}
+
+.date-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    margin-bottom: 2rem;
+}
+
+.date-section h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.calorie-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.calorie-gauge-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.calorie-gauge {
+    height: 2rem;
+    background-color: #e9ecef;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.gauge-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 1rem;
+}
+
+.gauge-info {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-top: 1rem;
+}
+
+.meal-summary {
+    margin-top: 3rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.meal-check-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.meal-check-item:last-child {
+    border-bottom: none;
+}
+
+.meal-check-item label {
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+
+.meal-check-item .meal-calories {
+    color: #666;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.alert a {
+    color: #721c24;
+    font-weight: bold;
+    text-decoration: underline;
 } 
