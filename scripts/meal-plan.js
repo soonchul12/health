@@ -44,38 +44,82 @@ function createDayPlan(day) {
     const dayDiv = document.createElement('div');
     dayDiv.className = 'day-plan';
     
+    const meals = {
+        breakfast: getRandomMeal('breakfast'),
+        lunch: getRandomMeal('lunch'),
+        dinner: getRandomMeal('dinner')
+    };
+
     dayDiv.innerHTML = `
         <h3>${day}</h3>
         <div class="meal-time">
             <h4>아침</h4>
             <div class="meal-items">
-                ${getRandomMeal('breakfast')}
+                ${createMealItemHTML(meals.breakfast, 'breakfast')}
             </div>
         </div>
         <div class="meal-time">
             <h4>점심</h4>
             <div class="meal-items">
-                ${getRandomMeal('lunch')}
+                ${createMealItemHTML(meals.lunch, 'lunch')}
             </div>
         </div>
         <div class="meal-time">
             <h4>저녁</h4>
             <div class="meal-items">
-                ${getRandomMeal('dinner')}
+                ${createMealItemHTML(meals.dinner, 'dinner')}
             </div>
         </div>
     `;
+
+    // 체크박스 이벤트 리스너 추가
+    const checkboxes = dayDiv.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateTodayMeals();
+        });
+    });
     
     return dayDiv;
 }
 
 // 랜덤 식단 선택 함수
 function getRandomMeal(mealType) {
-    const meal = mealDatabase[mealType][Math.floor(Math.random() * mealDatabase[mealType].length)];
+    return mealDatabase[mealType][Math.floor(Math.random() * mealDatabase[mealType].length)];
+}
+
+// 식사 아이템 HTML 생성 함수
+function createMealItemHTML(meal, mealType) {
+    const today = new Date().toLocaleDateString();
+    const savedMeals = JSON.parse(localStorage.getItem('todayMeals')) || [];
+    const isCompleted = savedMeals.some(m => m.name === meal.name && m.completed);
+
     return `
         <div class="meal-item">
-            <input type="checkbox" id="${mealType}-${Math.random()}">
+            <input type="checkbox" id="${mealType}-${Math.random()}" 
+                   ${isCompleted ? 'checked' : ''}>
             <label>${meal.name} (${meal.calories}kcal, 단백질 ${meal.protein}g)</label>
         </div>
     `;
+}
+
+// 오늘의 식사 업데이트 함수
+function updateTodayMeals() {
+    const allMealItems = document.querySelectorAll('.meal-item');
+    const todayMeals = [];
+
+    allMealItems.forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const label = item.querySelector('label');
+        const mealText = label.textContent;
+        const calories = parseInt(mealText.match(/\((\d+)kcal/)[1]);
+
+        todayMeals.push({
+            name: mealText.split(' (')[0],
+            calories: calories,
+            completed: checkbox.checked
+        });
+    });
+
+    localStorage.setItem('todayMeals', JSON.stringify(todayMeals));
 } 
