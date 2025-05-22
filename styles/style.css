@@ -10,11 +10,25 @@ body {
     color: #333;
 }
 
+
 header {
     background-color: #4CAF50;
     color: white;
     padding: 1rem;
     text-align: center;
+    a:link {
+  color : white;
+}
+a{text-decoration-line:none}
+a:visited {
+  color : white;
+}
+a:hover {
+  color : red;
+}
+a:active {
+  color : white
+}
 }
 
 nav ul {
